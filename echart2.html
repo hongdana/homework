@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- 引入刚刚下载的 ECharts 文件 -->
+    <script src="echarts.min.js"></script>
+    <title>电影评分分布图</title>
+</head>
+<body>
+    <div align="center"><h1>Top10电影评分以及观影人数</h1></div>
+    <div id="main" style="width: 100%;height:400px;"></div>
+    <script type="text/javascript">
+var dom = document.getElementById("main");
+var myChart = echarts.init(dom);
+var app = {};
+
+var option;
+
+
+
+option = {
+  color:['#408080'],
+  xAxis: {
+    type: 'category',
+    data: ['9.7', '9.6', '9.5', '9.4', '9.4', '9.6', '9.4', '9.5', '9.3', '9.4']
+  },
+  yAxis: {
+    type: 'value'
+  },
+  series: [
+    {
+      type: 'bar',
+      showBackground: true,
+      itemStyle: {
+        color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+          { offset: 0, color: '#83bff6' },
+          { offset: 0.5, color: '#188df0' },
+          { offset: 1, color: '#188df0' }
+        ])
+      },
+      emphasis: {
+        itemStyle: {
+          color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+            { offset: 0, color: '#2378f7' },
+            { offset: 0.7, color: '#2378f7' },
+            { offset: 1, color: '#83bff6' }
+          ])
+        }
+      },
+      data: ['2518511', '1872381', '1892296', '1853917', '2053046', '1160549', '1973661', '968082', '1817442', '1247341'],
+      barWidth:'50%',
+      type: 'bar'
+    }
+  ]
+};
+
+if (option && typeof option === 'object') {
+    myChart.setOption(option);
+}
+
+        </script>
+    </body>
+</html>
